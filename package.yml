@@ -1,0 +1,19 @@
+package: community.lazycat.app.litepan
+version: 0.5.7-beta
+name: LitePan
+description: "Multi-cloud drive aggregation mount: WebDAV, STRM, media organize"
+min_os_version: 1.6.1
+author: Ponphil
+license: LicenseRef-NOASSERTION
+homepage: https://github.com/Ponphil/LitePan
+permissions:
+  required:
+    - net.internet
+    - fuse.mount
+locales:
+  zh:
+    name: "LitePan"
+    description: "多网盘聚合挂载：WebDAV、STRM 生成、媒体整理（TMDB）、本地 FUSE 挂载、串联任务、离线下载"
+  en:
+    name: "LitePan"
+    description: "Multi-cloud drive aggregation mount with WebDAV, STRM, media organize and FUSE"

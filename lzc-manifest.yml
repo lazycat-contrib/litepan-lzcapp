@@ -1,0 +1,36 @@
+application:
+  subdomain: litepan
+  background_task: true
+  multi_instance: false
+  public_path:
+    - /
+  upstreams:
+    - location: /
+      backend: http://litepan:5211/
+  ingress:
+    # 内置磁力下载的 TCP/uTP/DHT 监听
+    - protocol: tcp
+      port: 42069
+      service: litepan
+    - protocol: udp
+      port: 42069
+      service: litepan
+
+services:
+  litepan:
+    # upstream: ponphil/litepan:v0.5.7-beta (docker.io)
+    image: docker.1ms.run/ponphil/litepan:v0.5.7-beta
+    environment:
+      - TZ=Asia/Shanghai
+    binds:
+      - /lzcapp/var/litepan/data:/app/data
+      - /lzcapp/var/litepan/strm:/app/strm
+      - /lzcapp/var/litepan/mounts:/app/mounts
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - wget -q --spider http://127.0.0.1:5211/health || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
