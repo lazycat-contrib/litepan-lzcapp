@@ -15,10 +15,9 @@ application:
     - protocol: udp
       port: 42069
       service: litepan
-
 services:
   litepan:
-    # upstream: ponphil/litepan:v0.5.7-beta (docker.io)
+    # upstream: docker.io/ponphil/litepan:v0.5.7-beta
     image: docker.1ms.run/ponphil/litepan:v0.5.7-beta
     environment:
       - TZ=Asia/Shanghai
